@@ -4,7 +4,7 @@ import numpy as np
 
 class Request(object):
     def __init__(self) -> None:
-        with open("demo.js", "r") as f:
+        with open("test.js", "r") as f:
             js_code = f.read()
         self.ctx = execjs.compile(js_code)
         self.bs64_img = "https://lcgwypt-login.yiboshi.com/captcha/get"
@@ -47,7 +47,7 @@ class SlideCrack(object):
         gap_img = cv2.imdecode(np.frombuffer(gap_data, np.uint8), cv2.IMREAD_COLOR)
         bg_img = cv2.imdecode(np.frombuffer(bg_data, np.uint8), cv2.IMREAD_COLOR)
         slide = self.image_edge_detection(gap_img)
-        slide_resized = cv2.resize(slide, dsize=(47, 155))
+        slide_resized = cv2.resize(slide, dsize=(45, 155))
         bg_gray = cv2.cvtColor(bg_img, cv2.COLOR_BGR2GRAY)
         bg_resized = cv2.resize(bg_gray, dsize=(340, 155))
         bg_edges = self.image_edge_detection(bg_resized)
